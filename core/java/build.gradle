@@ -144,6 +144,7 @@ dependencies {
 
     testImplementation platform(libs.junit.bom)
     testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
     testImplementation project(path: ':toolkit:go', configuration: 'libstarter')
     testImplementation libs.jsonassert
 

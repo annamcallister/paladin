@@ -145,6 +145,7 @@ dependencies {
 
     testImplementation platform(libs.junit.bom)
     testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
     testImplementation libs.slf4j.reload4j
     testImplementation libs.jackson.databind
     testImplementation libs.jsonassert
@@ -157,15 +158,30 @@ dependencies {
 
     integrationTestImplementation platform(libs.junit.bom)
     integrationTestImplementation libs.junit.jupiter
+    integrationTestRuntimeOnly libs.junit.platform.launcher
     integrationTestImplementation libs.jackson.databind
 
-    implementation libs.besu.evm
-    implementation libs.besu.datatypes
-    implementation libs.besu.trie
+    // Besu's modules state their own dependency versions. Its BOM adds version suggestions for every library across Besu, which Pente doesn't use.
+    // A node supplies log4j to plugins, and Besu's SLF4J logging is not routed into it.
+    implementation(libs.besu.evm) {
+        exclude group: 'org.hyperledger.besu', module: 'bom'
+        exclude group: 'org.apache.logging.log4j'
+    }
+    implementation(libs.besu.datatypes) {
+        exclude group: 'org.hyperledger.besu', module: 'bom'
+        exclude group: 'org.apache.logging.log4j'
+    }
+    implementation(libs.besu.trie) {
+        exclude group: 'org.hyperledger.besu', module: 'bom'
+        exclude group: 'org.apache.logging.log4j'
+    }
 
+    implementation libs.web3j.abi
     implementation libs.web3j.rlp
-    implementation libs.web3j.core
 
+    // BouncyCastle's modules are released together, so they are held to one version.
+    implementation platform(libs.bouncycastle.bom)
+    implementation libs.bcprov
     implementation libs.commons.io
     implementation libs.tuweni.bytes
     implementation libs.tuweni.units

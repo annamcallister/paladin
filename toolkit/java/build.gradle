@@ -49,6 +49,10 @@ tasks.named('generateProto') {
     dependsOn 'collectProtocFiles'
 }
 
+tasks.named('processProtoResources') {
+    dependsOn 'collectProtocFiles'
+}
+
 tasks.named('processResources') {
     dependsOn 'generateProto'
 }
@@ -91,6 +95,7 @@ dependencies {
     testImplementation project(path: ":solidity", configuration: "compiledContracts")
     testImplementation platform(libs.junit.bom)
     testImplementation libs.junit.jupiter
+    testRuntimeOnly libs.junit.platform.launcher
     testImplementation libs.jsonassert
     testRuntimeOnly libs.log4j.core
 }
