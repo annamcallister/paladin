@@ -130,6 +130,8 @@ dependencies {
     implementation libs.jackson.dataformat.yaml
 
     implementation libs.log4j.core
+    // Plugins share core's SLF4J, so this routes their SLF4J logging into log4j too.
+    implementation libs.log4j.slf4j2.impl
 
     toolkitProtoDefinitions project(path: ":toolkit:proto", configuration: "protoDefinitions")
 

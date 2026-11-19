@@ -16,7 +16,6 @@ netty = "4.2.20.Final"
 protobuf = "4.36.2"
 protobuf-plugin = "0.10.1"
 shadow = "8.3.9"
-slf4j = "2.0.20"
 tomcat-annotations = "6.0.53"
 tuweni = "2.7.2"
 web3j = "6.1.0"
@@ -42,9 +41,9 @@ junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
 junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j" }
+log4j-slf4j2-impl = { module = "org.apache.logging.log4j:log4j-slf4j2-impl", version.ref = "log4j" }
 netty-all = { module = "io.netty:netty-all", version.ref = "netty" }
 protobuf-java-util = { module = "com.google.protobuf:protobuf-java-util", version.ref = "protobuf" }
-slf4j-reload4j = { module = "org.slf4j:slf4j-reload4j", version.ref = "slf4j" }
 tomcat-annotations-api = { module = "org.apache.tomcat:annotations-api", version.ref = "tomcat-annotations" }
 tuweni-bytes = { module = "io.consensys.tuweni:tuweni-bytes", version.ref = "tuweni" }
 tuweni-units = { module = "io.consensys.tuweni:tuweni-units", version.ref = "tuweni" }

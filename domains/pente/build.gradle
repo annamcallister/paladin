@@ -65,6 +65,7 @@ shadowJar {
     mergeServiceFiles()
 
     exclude 'io/kaleido/paladin/logging/**'
+    exclude 'org/slf4j/**'
 }
 
 assemble.dependsOn shadowJar
@@ -146,10 +147,10 @@ dependencies {
     testImplementation platform(libs.junit.bom)
     testImplementation libs.junit.jupiter
     testRuntimeOnly libs.junit.platform.launcher
-    testImplementation libs.slf4j.reload4j
     testImplementation libs.jackson.databind
     testImplementation libs.jsonassert
     testImplementation libs.log4j.core
+    testRuntimeOnly libs.log4j.slf4j2.impl
 
     integrationTestImplementation project(path: ":core:java")
     integrationTestImplementation project(path: ":solidity", configuration: "compiledContracts")
@@ -162,7 +163,7 @@ dependencies {
     integrationTestImplementation libs.jackson.databind
 
     // Besu's modules state their own dependency versions. Its BOM adds version suggestions for every library across Besu, which Pente doesn't use.
-    // A node supplies log4j to plugins, and Besu's SLF4J logging is not routed into it.
+    // A node supplies logging to plugins.
     implementation(libs.besu.evm) {
         exclude group: 'org.hyperledger.besu', module: 'bom'
         exclude group: 'org.apache.logging.log4j'
