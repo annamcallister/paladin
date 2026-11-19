@@ -93,6 +93,7 @@ WORKDIR /app
 
 # Initialize gradle and build tasks
 COPY build.gradle settings.gradle ./
+COPY gradle/libs.versions.toml gradle/libs.versions.toml
 COPY buildSrc buildSrc
 RUN gradle --no-daemon --parallel :buildSrc:jar
 
