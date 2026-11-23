@@ -24,7 +24,10 @@ updates:
           - "major"
 
   - package-ecosystem: "gradle"
-    directory: "/"
+    directories:
+      - "/core/java"
+      - "/domains/pente"
+      - "/toolkit/java"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 2
