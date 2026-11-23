@@ -1,0 +1,32 @@
+name: Gradle Dependency Submission
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dependency-submission:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+
+      - name: Setup Java
+        uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: 'temurin'
+          java-version: 21
+
+      # GitHub's dependency graph cannot read a Gradle build, so Dependabot alerts only cover Java once its resolved dependencies are submitted
+      - name: Submit Java dependencies
+        uses: gradle/actions/dependency-submission@48b5f213c81028ace310571dc5ec0fbbca0b2947 # v4.4.3
+        with:
+          dependency-graph-include-projects: '^:(core:java|toolkit_java|domains:pente)$'
