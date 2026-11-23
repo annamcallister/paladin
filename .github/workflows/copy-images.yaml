@@ -2,8 +2,6 @@ name: Copy Images Between Registries
 
 permissions:
   contents: read
-  packages: write
-  id-token: write
 
 on:
   workflow_call:
@@ -31,6 +29,9 @@ on:
 
 jobs:
   copy-to-dockerhub:
+    permissions:
+      contents: read
+      packages: read
     runs-on: ubuntu-latest
     strategy:
       matrix:

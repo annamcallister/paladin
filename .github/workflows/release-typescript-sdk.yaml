@@ -2,7 +2,6 @@ name: TypeScript SDK Release
 
 permissions:
   contents: read
-  id-token: write
 
 on:
   workflow_call:
@@ -22,6 +21,9 @@ on:
         type: string
 jobs:
   publish:
+    permissions:
+      contents: read
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

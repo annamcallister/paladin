@@ -8,9 +8,7 @@
 name: Release Entry Point
 
 permissions:
-  contents: write
-  packages: write
-  id-token: write
+  contents: read
 
 on:
   workflow_dispatch:
@@ -46,6 +44,10 @@ on:
 
 jobs:
   release-candidate:
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
     if: inputs.release_type == 'rc'
     uses: ./.github/workflows/release-candidate.yaml
     with:
@@ -53,6 +55,10 @@ jobs:
     secrets: inherit
 
   release-final:
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
     if: inputs.release_type == 'final'
     uses: ./.github/workflows/release.yaml
     with:
@@ -62,6 +68,9 @@ jobs:
     secrets: inherit
 
   release-sdk:
+    permissions:
+      contents: read
+      id-token: write
     if: inputs.release_type == 'sdk'
     uses: ./.github/workflows/release-typescript-sdk.yaml
     with:

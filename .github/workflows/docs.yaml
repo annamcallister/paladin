@@ -11,6 +11,9 @@ on:
       - "doc-site/docs/**"
   release:
     types: [released]
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest

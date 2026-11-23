@@ -1,8 +1,6 @@
 name: Build (push)
 permissions:
-  contents: write
-  packages: write
-  id-token: write
+  contents: read
 
 on:
   push:
@@ -26,6 +24,9 @@ jobs:
     uses: ./.github/workflows/core-coordination-component-tests.yaml
    
   release-image:
+    permissions:
+      contents: read
+      packages: write
     # run only on pushes to main or manual triggers
     uses: ./.github/workflows/cross-build-images.yaml
     with:

@@ -1,9 +1,7 @@
 name: Build docker image
 permissions:
-  contents: write
-  packages: write
-  id-token: write
-  
+  contents: read
+
 on:
   workflow_call:
     inputs:
@@ -53,6 +51,9 @@ on:
 
 jobs:
   docker:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ${{ inputs.runs-on }}
     steps:
       - uses: actions/checkout@v4

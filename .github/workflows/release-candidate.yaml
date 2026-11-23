@@ -6,9 +6,7 @@
 name: Release Candidate
 
 permissions:
-  contents: write
-  packages: write
-  id-token: write
+  contents: read
 
 on:
   workflow_call:
@@ -91,6 +89,9 @@ jobs:
 
   # Build and publish RC images
   release-images:
+    permissions:
+      contents: read
+      packages: write
     needs: setup
     uses: ./.github/workflows/release-images.yaml
     with:
@@ -102,6 +103,8 @@ jobs:
 
   # Test and release RC Helm charts
   release-charts:
+    permissions:
+      contents: write
     needs: [setup, release-images]
     uses: ./.github/workflows/release-charts.yaml
     with:
@@ -121,6 +124,9 @@ jobs:
 
   # Upload Solidity contracts
   release-solidity-contracts:
+    permissions:
+      contents: read
+      id-token: write
     needs: [setup, test-examples]
     uses: ./.github/workflows/release-solidity-contracts.yaml
     with:
@@ -128,6 +134,9 @@ jobs:
 
   # Release TypeScript SDK
   release-typescript-sdk:
+    permissions:
+      contents: read
+      id-token: write
     needs: [setup, test-examples]
     uses: ./.github/workflows/release-typescript-sdk.yaml
     with:
@@ -149,6 +158,8 @@ jobs:
   # ================================ Prepare release ================================
   # Override SDK version in examples and create a release branch
   prepare-release:
+    permissions:
+      contents: write
     needs: [setup, test-rollout-compatibility]
     runs-on: ubuntu-latest
     outputs:
@@ -180,6 +191,8 @@ jobs:
   # Only create the RC release after all tests have passed
   # This step bundles all built artifacts and creates the GitHub release
   create-rc-release:
+    permissions:
+      contents: write
     needs: [setup, prepare-release]
     runs-on: ubuntu-latest
     steps:

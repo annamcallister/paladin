@@ -1,9 +1,7 @@
 name: Paladin Buildx
 permissions:
-  contents: write
-  packages: write
-  id-token: write
-  
+  contents: read
+
 on:
   workflow_call:
     inputs:
@@ -42,6 +40,9 @@ jobs:
           registry: ${{ inputs.registry }}
 
   core-macos:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -57,6 +58,9 @@ jobs:
       password: ${{ secrets.password }}
 
   core-ubuntu:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -72,6 +76,9 @@ jobs:
       password: ${{ secrets.password }}
 
   operator-ubuntu:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -87,6 +94,9 @@ jobs:
       password: ${{ secrets.password }}
 
   operator-macos:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -102,6 +112,9 @@ jobs:
       password: ${{ secrets.password }}
 
   pldtest-ubuntu:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -117,6 +130,9 @@ jobs:
       password: ${{ secrets.password }}
     
   pldtest-macos:
+    permissions:
+      contents: read
+      packages: write
     needs: set-repository
     uses: ./.github/workflows/build-image.yaml
     with:
@@ -132,6 +148,9 @@ jobs:
       password: ${{ secrets.password }}
      
   core-docker-manifest:
+    permissions:
+      contents: read
+      packages: write
     if: ${{ inputs.push }}
     needs: [set-repository, core-macos, core-ubuntu]
     runs-on: ubuntu-latest
@@ -169,6 +188,9 @@ jobs:
           done
 
   operator-docker-manifest:
+    permissions:
+      contents: read
+      packages: write
     if: ${{ inputs.push }}
     needs: [set-repository, operator-macos, operator-ubuntu]
     runs-on: ubuntu-latest
@@ -206,6 +228,9 @@ jobs:
           done
 
   pldtest-docker-manifest:
+    permissions:
+      contents: read
+      packages: write
     if: ${{ inputs.push }}
     needs: [set-repository, pldtest-macos, pldtest-ubuntu]
     runs-on: ubuntu-latest

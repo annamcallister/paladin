@@ -1,8 +1,6 @@
 name: Build (PR)
 permissions:
-  contents: write
-  packages: write
-  id-token: write
+  contents: read
 
 on:
   pull_request:
@@ -21,6 +19,9 @@ jobs:
     uses: ./.github/workflows/core-coordination-component-tests.yaml
 
   build-core-image:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/build-image.yaml
     with:
       dockerfile: ./Dockerfile
@@ -33,6 +34,9 @@ jobs:
       runs-on: ubuntu-latest
 
   build-operator-image:
+    permissions:
+      contents: read
+      packages: write
     uses: ./.github/workflows/build-image.yaml
     with:
       dockerfile: ./operator/Dockerfile

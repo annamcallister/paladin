@@ -6,10 +6,8 @@
 name: Release
 
 permissions:
-  contents: write
-  packages: write
-  id-token: write
-  
+  contents: read
+
 on:
   workflow_call:
     inputs:
@@ -152,6 +150,9 @@ jobs:
 
   # Retag RC images with final release tags (much faster than rebuilding)
   release-images:
+    permissions:
+      contents: read
+      packages: write
     needs: setup
     uses: ./.github/workflows/retag-images.yaml
     with:
@@ -165,6 +166,8 @@ jobs:
 
   # Test and release final Helm charts
   release-charts:
+    permissions:
+      contents: write
     needs: [setup, release-images]
     uses: ./.github/workflows/release-charts.yaml
     with:
@@ -187,6 +190,9 @@ jobs:
 
   # Upload final Solidity contracts
   release-solidity-contracts:
+    permissions:
+      contents: read
+      id-token: write
     needs: [setup, test-examples]
     uses: ./.github/workflows/release-solidity-contracts.yaml
     with:
@@ -195,6 +201,9 @@ jobs:
 
   # Release final TypeScript SDK
   release-typescript-sdk:
+    permissions:
+      contents: read
+      id-token: write
     needs: [setup, test-examples]
     uses: ./.github/workflows/release-typescript-sdk.yaml
     with:
@@ -205,6 +214,8 @@ jobs:
   # ================================ Prepare release ================================
   # Override SDK version in examples and create a release branch
   prepare-release:
+    permissions:
+      contents: write
     needs: [setup, release-solidity-contracts, release-typescript-sdk]
     runs-on: ubuntu-latest
     outputs:
@@ -236,6 +247,8 @@ jobs:
   # Bundle all built artifacts and create the final GitHub release
   # This step only runs after all artifacts have been successfully built and published
   create-final-release:
+    permissions:
+      contents: write
     needs: [setup, prepare-release]
     runs-on: ubuntu-latest
     steps:

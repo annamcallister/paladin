@@ -2,8 +2,6 @@ name: Retag Images
 
 permissions:
   contents: read
-  packages: write
-  id-token: write
 
 on:
   workflow_call:
@@ -91,6 +89,9 @@ jobs:
         uses: ./.github/actions/print-disk-usage
 
   retag-ghcr:
+    permissions:
+      contents: read
+      packages: write
     runs-on: ubuntu-latest
     strategy:
       matrix:
