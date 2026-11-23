@@ -56,7 +56,7 @@ jobs:
       NAMESPACE: paladin
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
           submodules: recursive
@@ -68,13 +68,13 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Install Kind
-        uses: helm/kind-action@v1
+        uses: helm/kind-action@ef37e7f390d99f746eb8b610417061a60e82a6cc # v1.14.0
         with:
           install_only: true # only install kind, the cluster creation is managed by the deploy step
           ignore_failed_clean: true
 
       - name: Download docker artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           path: /tmp # download all docker images to /tmp
           pattern: paladin-*
@@ -87,7 +87,7 @@ jobs:
           docker image ls -a  
         
       # The makefile uses kustomize
-      - uses: imranismail/setup-kustomize@v2
+      - uses: imranismail/setup-kustomize@2ba527d4d055ab63514ba50a99456fc35684947f # v2.1.0
 
       - name: E2E Test
         run: |
@@ -142,7 +142,7 @@ jobs:
  
       - name: Upload logs
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: paladin-logs
           path: |

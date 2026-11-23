@@ -64,7 +64,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           submodules: recursive
           ref: ${{ inputs.ref != '' && inputs.ref || github.ref }}
@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/actions/free-up-disk-space
 
       - name: Install Kind
-        uses: helm/kind-action@v1
+        uses: helm/kind-action@ef37e7f390d99f746eb8b610417061a60e82a6cc # v1.14.0
         with:
           install_only: true # only install kind, the cluster creation is managed by the next step
           ignore_failed_clean: true
@@ -90,7 +90,7 @@ jobs:
           kubectl wait --for=condition=Ready nodes --all --timeout=300s
 
       - name: Cache Helm repositories
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
           path: |
             ~/.cache/helm

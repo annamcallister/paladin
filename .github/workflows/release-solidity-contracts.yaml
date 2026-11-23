@@ -52,7 +52,7 @@ jobs:
       id-token: write
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       with:
         fetch-depth: 0
         submodules: recursive
@@ -65,7 +65,7 @@ jobs:
       uses: ./.github/actions/setup
 
     - name: Install js-merkletree dependency by checking out from github.com/kaleido-io/js-merkletree
-      uses: actions/checkout@v4
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
       with:
         repository: kaleido-io/js-merkletree
         path: solidity/js-merkletree
@@ -114,7 +114,7 @@ jobs:
         tar -czvf contracts/zeto-abis.tar.gz -C zeto-contracts .
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
       id: upload-artifacts
       with:
         name: contracts

@@ -1,5 +1,5 @@
 # Stage 1: Compile Solidity contracts to generate ABI artefacts
-FROM node:20-bookworm-slim AS solidity-builder
+FROM node:20-bookworm-slim@sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0 AS solidity-builder
 WORKDIR /workspace
 COPY solidity/package.json solidity/package-lock.json solidity/
 COPY solidity/contracts solidity/contracts
@@ -8,7 +8,7 @@ COPY solidity/tsconfig.json solidity/
 RUN cd solidity && npm ci && npm run compile
 
 # Stage 2: Build the pldtest binary
-FROM golang:1.26-bookworm AS go-builder
+FROM golang:1.26-bookworm@sha256:dc40a13b61304647ed7e5d581d246b86413dfc29d63c6d018310feb93cd98fc0 AS go-builder
 WORKDIR /workspace
 
 COPY go.work go.work.sum ./
@@ -46,7 +46,7 @@ RUN cd test && go build \
     ./pldtest/
 
 # Stage 3: Runtime image
-FROM ubuntu:24.04
+FROM ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289
 
 ARG TARGETARCH
 
