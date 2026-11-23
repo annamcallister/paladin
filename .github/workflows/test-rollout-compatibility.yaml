@@ -75,7 +75,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Install Kind and Helm
-        uses: helm/kind-action@0025e74a8c7512023d06dc019c617aa3cf561fde # v1.10.0
+        uses: helm/kind-action@ea822c7bf1874f08e5a491df991c228edffc3376 # v1.15.2
         with:
           install_only: true
           ignore_failed_clean: true
