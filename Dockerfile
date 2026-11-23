@@ -12,7 +12,7 @@ ARG JVM_TYPE=hotspot
 ARG JVM_HEAP=normal
 
 # Stage 1: Builder base for all the sub-builds
-FROM ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289 AS base-builder   
+FROM ubuntu:26.04@sha256:d66b366dac61b575bee2aef07e9c26e8070096fbe84a3d4d3eb0da069b5d76db AS base-builder   
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -159,7 +159,7 @@ RUN mkdir -p /build/go-migrate && \
     mv /build/go-migrate/migrate-${GO_MIGRATE_VERSION}/migrate /build/migrate
 
 # Stage 4: Pull together runtime
-FROM ubuntu:24.04@sha256:9c7f200c07e3d4a03e7249d2c16bf66a51120fb876aa2242cf31451412543289 AS runtime
+FROM ubuntu:26.04@sha256:d66b366dac61b575bee2aef07e9c26e8070096fbe84a3d4d3eb0da069b5d76db AS runtime
 
 ARG TARGETOS
 ARG TARGETARCH
