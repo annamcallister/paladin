@@ -2,11 +2,11 @@
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
 biz.aQute.bnd:biz.aQute.bnd.annotation:7.1.0=compileClasspath
-com.fasterxml.jackson.core:jackson-annotations:2.23=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
-com.fasterxml.jackson.core:jackson-core:2.23.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
-com.fasterxml.jackson.core:jackson-databind:2.23.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
-com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.23.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
-com.fasterxml.jackson:jackson-bom:2.23.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-annotations:2.21=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-core:2.21.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-databind:2.21.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.21.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+com.fasterxml.jackson:jackson-bom:2.21.0=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
 com.google.android:annotations:4.1.1.4=compileProtoPath,runtimeClasspath,testCompileProtoPath,testRuntimeClasspath
 com.google.api.grpc:proto-google-common-protos:2.64.1=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
 com.google.code.findbugs:jsr305:3.0.2=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
@@ -94,5 +94,5 @@ org.osgi:org.osgi.annotation.versioning:1.1.2=compileClasspath
 org.osgi:org.osgi.resource:1.0.0=compileClasspath
 org.osgi:org.osgi.service.serviceloader:1.0.0=compileClasspath
 org.skyscreamer:jsonassert:1.5.3=testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
-org.yaml:snakeyaml:2.5=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
+org.yaml:snakeyaml:2.4=compileClasspath,compileProtoPath,runtimeClasspath,testCompileClasspath,testCompileProtoPath,testRuntimeClasspath
 empty=annotationProcessor,protobuf,testAnnotationProcessor,testProtobuf,toolkitProtoDefinitions

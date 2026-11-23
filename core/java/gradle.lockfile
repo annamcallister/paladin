@@ -2,11 +2,11 @@
 # Manual edits can break the build and are not advised.
 # This file is expected to be part of source control.
 biz.aQute.bnd:biz.aQute.bnd.annotation:7.1.0=compileClasspath,testCompileClasspath
-com.fasterxml.jackson.core:jackson-annotations:2.23=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-com.fasterxml.jackson.core:jackson-core:2.23.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-com.fasterxml.jackson.core:jackson-databind:2.23.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.23.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-com.fasterxml.jackson:jackson-bom:2.23.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-annotations:2.21=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-core:2.21.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.fasterxml.jackson.core:jackson-databind:2.21.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.21.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+com.fasterxml.jackson:jackson-bom:2.21.0=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 com.google.android:annotations:4.1.1.4=runtimeClasspath,testRuntimeClasspath
 com.google.api.grpc:proto-google-common-protos:2.64.1=runtimeClasspath,testRuntimeClasspath
 com.google.code.findbugs:jsr305:3.0.2=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
@@ -94,5 +94,5 @@ org.osgi:org.osgi.resource:1.0.0=compileClasspath,testCompileClasspath
 org.osgi:org.osgi.service.serviceloader:1.0.0=compileClasspath,testCompileClasspath
 org.skyscreamer:jsonassert:1.5.3=testCompileClasspath,testRuntimeClasspath
 org.slf4j:slf4j-api:2.0.17=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
-org.yaml:snakeyaml:2.5=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
+org.yaml:snakeyaml:2.4=compileClasspath,runtimeClasspath,testCompileClasspath,testRuntimeClasspath
 empty=annotationProcessor,libcore,libstarter,shadow,testAnnotationProcessor,testPluginAnnotationProcessor,testPluginCompileClasspath,testPluginRuntimeClasspath,toolkitProtoDefinitions
